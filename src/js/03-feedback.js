@@ -11,7 +11,7 @@ const formData = {}
  
 refs.form.addEventListener('submit', onFormSubmit);
 refs.form.addEventListener('input', throttle(onInputEntry, 500));
-saveData();
+saveFormData();
 
 
 refs.form.addEventListener('input', evt => {
@@ -31,7 +31,11 @@ function onInputEntry() {
     localStorage.setItem(LOCALSTORAGE_KEY, JSON.stringify(formData));
 }
 
-function saveData() {
-    const data = JSON.parse(localStorage.getItem(LOCALSTORAGE_KEY));
+function saveFormData() {
+    const saveData = JSON.parse(localStorage.getItem(LOCALSTORAGE_KEY));
 
+    if (saveData) {
+        form.elements = saveData.email ?? saveData.value;
+        form.elements = saveData.message ?? saveData.value;
+    }
 }
