@@ -5,16 +5,16 @@ const iframe = document.querySelector('iframe');
 const player = new Player(iframe);
 player.on('timeupdate', throttle(onPlay, 1000));
 
-const currentTime = "videoplayer-current-time";
+const CURRENT_TIME = "videoplayer-current-time";
 
 function onPlay({ seconds }) {
-    localStorage.setItem(currentTime, seconds)
+    localStorage.setItem(CURRENT_TIME, seconds)
 }
 
 setCurrentTime()
 function setCurrentTime() {
-    if (!localStorage.getItem(currentTime)) {
+    if (!localStorage.getItem(CURRENT_TIME)) {
         return;
     }
-    player.setCurrentTime(localStorage.getItem(currentTime))
+    player.setCurrentTime(localStorage.getItem(CURRENT_TIME))
  }
