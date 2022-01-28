@@ -35,7 +35,11 @@ function saveFormData() {
     const saveData = JSON.parse(localStorage.getItem(LOCALSTORAGE_KEY));
 
     if (saveData) {
-        form.elements = saveData.email ?? saveData.value;
-        form.elements = saveData.message ?? saveData.value;
+       form.elements.value = saveData.email ? saveData.email : saveData.value;
+       form.elements.value = saveData.message ? saveData.message : saveData.value;
     }
+    // if (saveData) {
+    //     form.elements = saveData.email ?? saveData.value;
+    //     form.elements = saveData.message ?? saveData.value;
+    // }
 }
